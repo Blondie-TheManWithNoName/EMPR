@@ -72,7 +72,7 @@
 		let total = 0;
 		var pa = [3];
 		for (var i = 0; i < 3; ++i) {
-			pa[i] = parseInt(document.getElementById("pa" + i).value, 10);
+			pa[i] = parseFloat(document.getElementById("pa" + i).value);
 			if (isNaN(pa[i]))
 			{
 				document.getElementById("pa" + i).value = "0";
@@ -98,7 +98,7 @@
 		percent();
 		ratioCalc();
 
-		if (total != parseInt(document.getElementById("totalAc").innerHTML))
+		if (total != parseFloat(document.getElementById("totalAc").innerHTML))
 		{
 			document.getElementById("totalPa").style.backgroundColor = "#c0392b";
 			document.getElementById("totalAc").style.backgroundColor = "#c0392b";
@@ -116,7 +116,7 @@
 		let total = 0;
 		var ac = [4];
 		for (var i = 0; i < 4; ++i) {
-			ac[i] = parseInt(document.getElementById("ac" + i).value, 10);
+			ac[i] = parseFloat(document.getElementById("ac" + i).value);
 			if (isNaN(ac[i]))
 			{
 				document.getElementById("ac" + i).value = "0";
@@ -142,7 +142,7 @@
 		percent();
 		ratioCalc();
 
-		if (total != parseInt(document.getElementById("totalPa").innerHTML))
+		if (total != parseFloat(document.getElementById("totalPa").innerHTML))
 		{
 			document.getElementById("totalAc").style.backgroundColor = "#c0392b";
 			document.getElementById("totalPa").style.backgroundColor = "#c0392b";
@@ -180,7 +180,7 @@
 		else
 		{
 			document.getElementById("RE").innerHTML += (pa0 / (pa0 + pa1 + pa2)).toFixed(2);
-			if ((pa0 / (pa0 + pa1 + pa2)).toFixed(2) > 0.6) document.getElementById("RE").innerHTML += " &#8211; L'empresa té un molts de deutes";
+			if ((pa0 / (pa0 + pa1 + pa2)).toFixed(2) > 0.6) document.getElementById("RE").innerHTML += " &#8211; L'empresa té molts deutes";
 			else if ((pa0 / (pa0 + pa1 + pa2)).toFixed(2) == 0.6) document.getElementById("RE").innerHTML += " &#8211; L'empresa està bé";
 			else if ((pa0 / (pa0 + pa1 + pa2)).toFixed(2) < 0.6) 
 			{
