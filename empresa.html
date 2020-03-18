@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Empresa</title>
+	<link rel="stylesheet" type="text/css" href="empresa.css"/>
+	<script type="text/javascript" src="empresa.js"></script>
+
+</head>
+<body>
+	<header>Anàlisi de la situació <br> patrimonial i financera <br> d'una Empresa</header>
+
+	<table class="text table" align="center">
+		<thead>
+			<tr>
+				<th colspan="6" style="padding-bottom: 1.2vw; font-size: 2vw;">Taula</th>
+			</tr>
+			<tr>
+				<th colspan="6 "><input defa class="inputTbl" type="text" name="year" placeholder="Any"></th>
+			</tr>
+			<tr>
+				<th colspan="3">Actiu</th>
+				<th colspan="3">Pasiu</th>
+			</tr>
+			<tr>
+				<th colspan="1"></th>
+				<th colspan="1">€</th>
+				<th colspan="1">%</th>
+				<th colspan="1"></th>
+				<th colspan="1">€</th>
+				<th colspan="1">%</th>
+			</tr>
+
+		</thead>
+		<tbody>
+			<tr>
+				<th style="background-color: rgba(155, 89, 182, 0.75)">Acitu <br> no Corrent</th>
+				<td class="tdInput"><input class="inputTbl" id="ac0" type="text" name="year" value="0" onkeydown="calcTotalSumAct()"></td>
+				<td id="percA0"></td>
+				<th style="background-color: rgba(241, 196, 15, 0.75)">Patrimoni <br> Net</th>
+				<td class="tdInput"><input class="inputTbl" id="pa0" type="text" name="year" value="0" onkeydown="calcTotalSumPas()"></td>
+				<td id="percP0"></td>
+			</tr>
+			<tr>
+				<th style="background-color: rgba(39, 174, 96, 0.75)">Existències</th>
+				<td class="tdInput"><input class="inputTbl" id="ac1" type="text" name="year" value="0" onkeydown="calcTotalSumAct()"></td>
+				<td id="percA1"></td>
+				<th style="background-color: rgba(52, 152, 219, 0.75)">Passiu <br> No Corrent</th>
+				<td class="tdInput"><input class="inputTbl" id="pa1" type="text" name="year" value="0" onkeydown="calcTotalSumPas()"></td>
+				<td id="percP1"></td>
+			</tr>
+			<tr>
+				<th style="background-color: rgba(39, 174, 96, 0.75)">Realitzable</th>
+				<td class="tdInput"><input class="inputTbl" id="ac2" type="text" name="year" value="0" onkeydown="calcTotalSumAct()"></td>
+				<td id="percA2"></td>
+				<th style="background-color: rgba(243, 156, 18, 0.75)">Passiu <br> Corrent</th>
+				<td class="tdInput"><input class="inputTbl" id="pa2" type="text" name="year" value="0" onkeydown="calcTotalSumPas()"></td>
+				<td id="percP2"></td>
+			</tr>
+			<tr>
+				<th style="background-color: rgba(39, 174, 96, 0.75)">Disponible</th>
+				<td class="tdInput"><input class="inputTbl" id="ac3" type="text" name="year" value="0" onkeydown="calcTotalSumAct()"></td>
+				<td id="percA3"></td>
+				<td colspan="5"></td>
+			</tr>
+			<tr style="background-color: #d1d8e0">
+				<th>Total</th>
+				<td id="totalAc"></td>
+				<td>100</td>
+				<td></td>
+				<td id="totalPa"></td>
+				<td>100</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="text" align="center" style="border-collapse: collapse;">
+		<thead style="background-color: transparent;">
+			<tr>
+				<th colspan="2" style="padding-bottom: 1.2vw; font-size: 2vw;">Representació gráfica</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+		<tr>
+			<td style="padding-right: 0vw;">
+				<div class="chart" id="acNoCorrent" title="Actiu no corrent">
+				</div>
+				<div class="chart" id="acCorrent" title="Actiu corrent">
+				</div>
+			</td>
+			<td style="padding-left: 0vw;">
+				<div class="chart" id="patNet" title="Patrimoni net">
+				</div>
+				<div class="chart" id="pasNoCorrent" title="Passiu no corrent">
+				</div>
+				<div class="chart" id="pasCorrent" title="Passiu corrent">
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+	<ul class="text">
+		<li>
+			<p id="RE"></p>
+		</li>
+		<li>
+			<p id="RQD"></p>
+		</li>
+		<li>
+			<p id="RL"></p>
+		</li>
+		<li>
+			<p id="TMC"><b>Ratio del termini de cobrament:</b> 94 €</p>
+		</li>
+		<li>
+			<p><b>Ratio del termini de pagament:</b> 160 dies </p>
+		</li>
+		
+	</ul>
+
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>2017</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Vendes</th>
+				<td>1200</td>
+			</tr>
+			<tr>
+				<th>Cost de les Vendes</th>
+				<td>-600</td>
+			</tr>
+			<tr>
+				<th>Marge Brut</th>
+				<td>600</td>
+			</tr>
+			<tr>
+				<th>Costos Fixes</th>
+				<td>-450</td>
+			</tr>
+			<tr>
+				<th>Beneficis abans d'interesos i d'impostos</th>
+				<td>150</td>
+			</tr>
+			<tr>
+				<th>Despeses Financeres</th>
+				<td>-30</td>
+			</tr>
+			<tr>
+				<th>Abans d'Impostos</th>
+				<td>120</td>
+			</tr>
+			<tr>
+				<th>Despeses Financeres</th>
+				<td>-30</td>
+			</tr>
+			<tr>
+				<th>Benefici net</th>
+				<td>90</td>
+			</tr>
+		</tbody>
+			
+	</table>
+
+
+
+</body>
+</html>
