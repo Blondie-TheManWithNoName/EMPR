@@ -168,7 +168,11 @@
 		let pa1 = parseFloat(document.getElementById("pa1").value);
 		let pa2 = parseFloat(document.getElementById("pa2").value);
 		let ac = parseFloat(document.getElementById("ac1").value) + parseFloat(document.getElementById("ac2").value) + parseFloat(document.getElementById("ac3").value);
-		
+		let cl = parseFloat(document.getElementById("fc0").value);
+		let pr = parseFloat(document.getElementById("fc1").value);
+		let vb = parseFloat(document.getElementById("fc2").value);
+		let cb = parseFloat(document.getElementById("fc3").value);
+
 		document.getElementById("RE").innerHTML = '<b>Ràtio endeutament: </b>';
 		if (pa0 + pa1 + pa2 == 0)
 		{
@@ -227,10 +231,44 @@
 			}
 			else if (Number((ac / pa2).toFixed(2)) == 1.00)document.getElementById("RL").innerHTML += " &#8211; L'empresa està correctament."
 		}
-		document.getElementById("TMC").innerHTML = '<b>Termini mitjà de cobrament: </b>';
 
 		document.getElementById("FM").innerHTML = '<b>Fons de maniobra: </b>' + (ac - pa2);
 		if (ac - pa2 < 0) document.getElementById("FM").innerHTML += " &#8211; L'empresa està en una mala situació, té problemes per pagar els deutes.";
 		else if (ac - pa2 > 0) document.getElementById("FM").innerHTML += " &#8211; L'empresa està en una situació de risc, dèpen dels seus clients per pagar els deutes.";
 		else document.getElementById("FM").innerHTML += " &#8211; L'empresa està en situació de risc.";
+
+
+		document.getElementById("TMC").innerHTML = '<b>Termini mitjà de cobrament:</b> ';
+		if (vb == 0)
+		{
+			if (cl != 0)
+				document.getElementById("TMC").innerHTML += '&#8734; &#8211; L\'empresa no cobrarà mai! D:';
+			else
+				document.getElementById("TMC").innerHTML += indMsg;
+		}
+		else
+		{
+			document.getElementById("TMC").innerHTML += Math.round((cl / vb) * 365) + " dies.";
+			if (cl == 0) document.getElementById("TMC").innerHTML += " &#8211; L'empresa cobrarà tots el dies! :D";
+		}
+
+		document.getElementById("TMP").innerHTML = '<b>Termini mitjà de pagament:</b> ';
+		if (cb == 0)
+		{
+			if (pr != 0)
+				document.getElementById("TMP").innerHTML += '&#8734; &#8211; L\'empresa no pagrà mai! :D';
+			else
+				document.getElementById("TMP").innerHTML += indMsg;
+		}
+		else
+		{
+			document.getElementById("TMP").innerHTML += Math.round((pr / cb) * 365) + " dies.";
+			if (cb.toFixed(2) == 0) document.getElementById("TMP").innerHTML += " &#8211; L'empresa pagarà tots el dies! D:";
+			if (Math.round((pr / cb) * 365) > Math.round((vb / cl) * 365))
+				document.getElementById("COMM").innerHTML = "Problema.";
+			else
+				document.getElementById("COMM").innerHTML = "Correcte.";
+		}
+
+
 	}
