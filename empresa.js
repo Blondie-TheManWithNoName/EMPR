@@ -2,16 +2,18 @@
 	function percent()
 	{
 		var sz = 4.5;	
-		let nm = parseFloat(document.getElementById("percA0").innerHTML, 10);
-		let nPatNet = parseFloat(document.getElementById("percP0").innerHTML, 10);
-		let nPasNoCorrent = parseFloat(document.getElementById("percP1").innerHTML, 10);
-		let nPasCorrent = parseFloat(document.getElementById("percP2").innerHTML, 10);
+		let nm = parseFloat(document.getElementById("percA0").innerHTML);
+		let nPatNet = parseFloat(document.getElementById("percP0").innerHTML);
+		let nPasNoCorrent = parseFloat(document.getElementById("percP1").innerHTML);
+		let nPasCorrent = parseFloat(document.getElementById("percP2").innerHTML);
 		let acNoCorrent = document.getElementById("acNoCorrent");
 		let acCorrent = document.getElementById("acCorrent");
 		let patNet = document.getElementById("patNet");
 		let pasNoCorrent = document.getElementById("pasNoCorrent");
 		
 		/* acNoCorrent */
+		if (nm == 69) acNoCorrent.setAttribute("title", "nice");
+		else acNoCorrent.setAttribute("title", "Actiu no corrent");
 		acNoCorrent.style.backgroundColor = "#9b59b6";
 		acNoCorrent.innerHTML = nm + "%";
 		acNoCorrent.style.height = nm * sz + "px";
@@ -19,6 +21,8 @@
 		acNoCorrent.style.lineHeight = nm * sz + "px";
 		
 		/* acCorrent */
+		if (nm == 31) acCorrent.setAttribute("title", "nice");
+		else acCorrent.setAttribute("title", "Actiu corrent");
 		acCorrent.style.backgroundColor = "#27ae60";
 		acCorrent.innerHTML = Number((100 - nm).toFixed(2)) + "%";
 		acCorrent.style.height = (100 - nm) * sz + "px";
@@ -26,6 +30,8 @@
 		acCorrent.style.lineHeight = (100 - nm) * sz + "px";
 
 		/* patNet */
+		if (nPatNet == 69) patNet.setAttribute("title", "nice");
+		else patNet.setAttribute("title", "Patrimoni net");
 		patNet.style.backgroundColor = "#f1c40f";
 		patNet.innerHTML = nPatNet + "%";
 		patNet.style.height = nPatNet * sz + "px";
@@ -33,6 +39,8 @@
 		patNet.style.lineHeight = nPatNet * sz + "px";
 
 		/* pasNoCorrent */
+		if (nPasNoCorrent == 69) pasNoCorrent.setAttribute("title", "nice");
+		else pasNoCorrent.setAttribute("title", "Pasiu no corrent");
 		pasNoCorrent.style.backgroundColor = "#3498db";
 		pasNoCorrent.innerHTML = nPasNoCorrent + "%";
 		pasNoCorrent.style.height = nPasNoCorrent * sz + "px";
@@ -40,6 +48,8 @@
 		pasNoCorrent.style.lineHeight = nPasNoCorrent * sz + "px";
 
 		/* pasCorrent */
+		if (nPasCorrent == 69) pasCorrent.setAttribute("title", "nice");
+		else pasCorrent.setAttribute("title", "Passiu corrent");
 		pasCorrent.style.backgroundColor = "#f39c12";
 		pasCorrent.innerHTML = nPasCorrent + "%";
 		pasCorrent.style.height = nPasCorrent * sz + "px";
@@ -67,87 +77,134 @@
 		}
 	}
 
-	function calcComptResult()
+	function calcComptResult() {
+		if(event.key === 'Enter')
+			comptResult();
+	}
+
+	function comptResult()
 	{
-		if(event.key === 'Enter') {
-			let cr0 = parseFloat(document.getElementById("cr0").value);
-			let cr1 = parseFloat(document.getElementById("cr1").value)
-			let cr2 = parseFloat(document.getElementById("cr2").value);
-			let cr3 = parseFloat(document.getElementById("cr3").value);
-			let cr4 = parseFloat(document.getElementById("cr4").value);
+		let cr0 = parseFloat(document.getElementById("cr0").value);
+		if (isNaN(cr0)) 
+		{
+			cr0 = 0;
+			document.getElementById("cr0").value = "0";
+		}
+		let cr1 = parseFloat(document.getElementById("cr1").value)
+		if (isNaN(cr1)) 
+		{
+			cr1 = 0;
+			document.getElementById("cr1").value = "0";
+		}
+		let cr2 = parseFloat(document.getElementById("cr2").value);
+		if (isNaN(cr2)) 
+		{
+			cr2 = 0;
+			document.getElementById("cr2").value = "0";
+		}
+		let cr3 = parseFloat(document.getElementById("cr3").value);
+		if (isNaN(cr3)) 
+		{
+			cr3 = 0;
+			document.getElementById("cr3").value = "0";
+		}
+		let cr4 = parseFloat(document.getElementById("cr4").value);
+		if (isNaN(cr4)) 
+		{
+			cr4 = 0;
+			document.getElementById("cr4").value = "0";
+		}
+		let r0 =  cr0 - cr1;
+		let r1 = r0 - cr2;
+		let r2 = r1 - cr3;
+		let r3 = r2 - cr4;
 
-			let r0 =  cr0 - cr1;
-			let r1 = r0 - cr2;
-			let r2 = r1 - cr3;
-			let r3 = r2 - cr4;
-
-			document.getElementById("MB").innerHTML = (r0).toString();
-			document.getElementById("BAII").innerHTML = (r1).toString();
-			document.getElementById("BAI").innerHTML = (r2).toString();
-			document.getElementById("BN").innerHTML = (r3).toString();
+		document.getElementById("MB").innerHTML = (r0).toString();
+		document.getElementById("BAII").innerHTML = (r1).toString();
+		document.getElementById("BAI").innerHTML = (r2).toString();
+		document.getElementById("BN").innerHTML = (r3).toString();
 
 
+		/* Charts */
 
-			let pc0 = (cr1 / cr0 * 100).toFixed(2);
-			let pc1 = (cr2 / cr0 * 100).toFixed(2);
-			let pc2 = (cr3 / cr0 * 100).toFixed(2);
-			let pc3 = (cr4 / cr0 * 100).toFixed(2);
-			let pc4 = (r3 / cr0 * 100).toFixed(2);
-			document.getElementById("percV").innerHTML = "100";
-			document.getElementById("percCV").innerHTML = (pc0).toString();
+		let pc0, pc1, pc2, pc3, pc4;
+
+		if (cr0 == 0)
+		{
+			pc0 = 50;
+			pc1 = 25;
+			pc2 = 12.5;
+			pc3 = 6.25;
+			pc4 = 6.25;
+		}
+		else
+		{
+			pc0 = (cr1 / cr0 * 100).toFixed(2);
+			pc1 = (cr2 / cr0 * 100).toFixed(2);
+			pc2 = (cr3 / cr0 * 100).toFixed(2);
+			pc3 = (cr4 / cr0 * 100).toFixed(2);
+			pc4 = (r3 / cr0 * 100).toFixed(2);
+		
 			document.getElementById("percMB").innerHTML = (r0 / cr0 * 100).toFixed(2).toString();
-			document.getElementById("percCF").innerHTML = (pc1).toString();
 			document.getElementById("percBAII").innerHTML = (r1 / cr0 * 100).toFixed(2).toString();
-			document.getElementById("percDF").innerHTML = (pc2).toString();
 			document.getElementById("percBAI").innerHTML = (r2 / cr0 * 100).toFixed(2).toString();
-			document.getElementById("percIS").innerHTML = (pc3).toString();
-			document.getElementById("percBN").innerHTML = (pc4).toString();
-			
-			let szY = 6;
-			let szX = 4.5;
-			/* Costos de vendes */
-			chartCV.style.backgroundColor = "#1e3799";
-			chartCV.innerHTML = pc0 + "%";
-			chartCV.style.height = pc0 * szY + "px";
-			chartCV.style.width = 75 * szX + "px";
-			chartCV.style.lineHeight = pc0 * szY + "px";
 
-			/* Costos fixos */
-			chartCF.style.backgroundColor = "#4a69bd";
-			chartCF.innerHTML = pc1 + "%";
-			chartCF.style.height = pc1 * szY + "px";
-			chartCF.style.width = 75 * szX + "px";
-			chartCF.style.lineHeight = pc1 * szY + "px";
+		}
+		document.getElementById("percV").innerHTML = "100";
+		document.getElementById("percCV").innerHTML = (pc0).toString();
+		document.getElementById("percCF").innerHTML = (pc1).toString();
+		document.getElementById("percDF").innerHTML = (pc2).toString();
+		document.getElementById("percIS").innerHTML = (pc3).toString();
+		document.getElementById("percBN").innerHTML = (pc4).toString();
+		
+		let szY = 6;
+		let szX = 4.5;
 
-			/* Despeses financieres */
-			chartDF.style.backgroundColor = "#6a89cc";
-			chartDF.innerHTML = pc2 + "%";
-			chartDF.style.height = pc2 * szY + "px";
-			chartDF.style.width = 75 * szX + "px";
-			chartDF.style.lineHeight = pc2 * szY + "px";
+		/* Costos de vendes */
+		if (Number(pc0) == 69) chartCV.setAttribute("title", "nice");
+		else chartCV.setAttribute("title", "Costos de vendes");
+		chartCV.style.backgroundColor = "#1e3799";
+		chartCV.innerHTML = Number(pc0) + "%";
+		chartCV.style.height = pc0 * szY + "px";
+		chartCV.style.width = 75 * szX + "px";
+		chartCV.style.lineHeight = pc0 * szY + "px";
 
-			/* Impostos */
-			chartIS.style.backgroundColor = "#60a3bc";
-			chartIS.innerHTML = pc3 + "%";
-			chartIS.style.height = pc3 * szY + "px";
-			chartIS.style.width = 75 * szX + "px";
-			chartIS.style.lineHeight = pc3 * szY + "px";
+		/* Costos fixos */
+		if (Number(pc1) == 69) chartCF.setAttribute("title", "nice");
+		else chartCF.setAttribute("title", "Costos fixos");
+		chartCF.style.backgroundColor = "#4a69bd";
+		chartCF.innerHTML = Number(pc1) + "%";
+		chartCF.style.height = pc1 * szY + "px";
+		chartCF.style.width = 75 * szX + "px";
+		chartCF.style.lineHeight = pc1 * szY + "px";
 
-			/* Benefici net */
-			chartBN.style.backgroundColor = "#7d5fff";
-			chartBN.innerHTML = pc4 + "%";
-			chartBN.style.height = pc4 * szY + "px";
-			chartBN.style.width = 75 * szX + "px";
-			chartBN.style.lineHeight = pc4 * szY + "px";
+		/* Despeses financieres */
+		if (Number(pc2) == 69) chartDF.setAttribute("title", "nice");
+		else chartDF.setAttribute("title", "Despeses financeres");
+		chartDF.style.backgroundColor = "#6a89cc";
+		chartDF.innerHTML = Number(pc2) + "%";
+		chartDF.style.height = pc2 * szY + "px";
+		chartDF.style.width = 75 * szX + "px";
+		chartDF.style.lineHeight = pc2 * szY + "px";
 
-		}	
-	}
+		/* Impostos */
+		if (Number(pc3) == 69) chartIS.setAttribute("title", "nice");
+		else chartIS.setAttribute("title", "Impostos");
+		chartIS.style.backgroundColor = "#60a3bc";
+		chartIS.innerHTML = Number(pc3) + "%";
+		chartIS.style.height = pc3 * szY + "px";
+		chartIS.style.width = 75 * szX + "px";
+		chartIS.style.lineHeight = pc3 * szY + "px";
 
-	function chartComptResult()
-	{
-
-	}
-
+		/* Benefici net */
+		if (Number(pc4) == 69) chartBN.setAttribute("title", "nice");
+		else chartBN.setAttribute("title", "Benefici net");
+		chartBN.style.backgroundColor = "#7d5fff";
+		chartBN.innerHTML = Number(pc4) + "%";
+		chartBN.style.height = pc4 * szY + "px";
+		chartBN.style.width = 75 * szX + "px";
+		chartBN.style.lineHeight = pc4 * szY + "px";
+	}	
 
 	function totalSumPas()
 	{
@@ -240,6 +297,7 @@
 	window.onload = () => {
 		totalSumPas();	
 		totalSumAct();
+		comptResult();
 	}
 
 	function ratioCalc()
