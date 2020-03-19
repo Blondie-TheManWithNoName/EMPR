@@ -9,17 +9,15 @@
 <body>
 	<header>Empresa</header>
 	<h1>Anàlisi de la situació <br> patrimonial i financera <br> d'una Empresa</h1>
-	<h2>Taula</h2>
+	<h2>Balanç</h2>
 	<table class="text table" align="center">
 		<thead>
 			<tr>
-				<th colspan="8"><input class="inputTbl" type="text" name="year" placeholder="Any"></th>
+				<th colspan="6"><input class="inputTbl" type="text" name="year" placeholder="Any"></th>
 			</tr>
 			<tr>
 				<th colspan="3" style="color: ">Actiu</th>
 				<th colspan="3">Pasiu</th>
-				<th colspan="2"></th>
-
 			</tr>
 			<tr>
 				<th colspan="1"></th>
@@ -28,8 +26,6 @@
 				<th colspan="1"></th>
 				<th colspan="1">€</th>
 				<th colspan="1">%</th>
-				<th colspan="1"></th>
-				<th colspan="1" style="padding-right: 5vw;">€</th>
 			</tr>
 
 		</thead>
@@ -41,15 +37,12 @@
 				<th style="background-color: rgba(241, 196, 15, 0.75)" rowspan="2">Patrimoni <br> Net</th>
 				<td class="tdInput" rowspan="2"><input class="inputTbl" id="pa0" type="text" name="year" value="0" onkeydown="calcTotalSum()"></td>
 				<td id="percP0" rowspan="2"></td>
-				<th>Clients</th>
-				<td class="tdInput" style="padding-right: 2vw;"><input class="inputTbl" id="fc0" type="text" name="text" value="0" onkeydown="calcTotalSum()"></td>
+				
 			</tr>
 			<tr>
 				<th style="background-color: rgba(39, 174, 96, 0.75)" rowspan="2">Existències</th>
 				<td class="tdInput" rowspan="2"><input class="inputTbl" id="ac1" type="text" name="year" value="0" onkeydown="calcTotalSum()"></td>
 				<td id="percA1" rowspan="2"></td>
-				<th rowspan="2">Proveïdors</th>				
-				<td class="tdInput" rowspan="2" style="padding-right: 2vw;"><input class="inputTbl" id="fc1" type="text" name="year" value="0" onkeydown="calcTotalSum()"></td>
 			</tr>
 			<tr>
 				<th style="background-color: rgba(52, 152, 219, 0.75); padding-top: 2vw; padding-bottom: 2vw;" rowspan="2">Passiu <br> No Corrent</th>
@@ -60,8 +53,7 @@
 				<th style="background-color: rgba(39, 174, 96, 0.75)" rowspan="2">Realitzable</th>
 				<td class="tdInput" rowspan="2"><input class="inputTbl" id="ac2" type="text" name="year" value="0" onkeydown="calcTotalSum()"></td>
 				<td id="percA2" rowspan="2"></td>
-				<th rowspan="2">Vendes Brutes</th>				
-				<td class="tdInput" rowspan="2" style="padding-right: 2vw;"><input class="inputTbl" id="fc2" type="text" name="year" value="0" onkeydown="calcTotalSum()"></td>
+				
 			</tr>
 			<tr>
 				<th style="background-color: rgba(243, 156, 18, 0.75)" rowspan="2">Passiu <br> Corrent</th>
@@ -72,8 +64,6 @@
 				<th style="background-color: rgba(39, 174, 96, 0.75)">Disponible</th>
 				<td class="tdInput"><input class="inputTbl" id="ac3" type="text" name="year" value="0" onkeydown="calcTotalSum()"></td>
 				<td id="percA3"></td>
-				<th>Compres Brutes</th>
-				<td class="tdInput" style="padding-right: 2vw;"><input class="inputTbl" id="fc3" type="text" name="text" value="0" onkeydown=""></td>
 			</tr>
 			<tr style="background-color: #d1d8e0">
 				<th>Total</th>
@@ -82,9 +72,27 @@
 				<th>Total</th>
 				<td id="totalPa"></td>
 				<td>100</td>
-				<td colspan="2"></td>
 			</tr>
 		</tbody>
+	</table>
+
+	<table class="text table" align="center">
+		<tr>
+			<th>Clients</th>
+			<td class="tdInput" style="padding-right: 2vw;"><input class="inputTbl" id="fc0" type="text" name="text" value="0" onkeydown="calcTotalSum()"></td>
+		</tr>
+		<tr>
+			<th>Proveïdors</th>				
+			<td class="tdInput" style="padding-right: 2vw;"><input class="inputTbl" id="fc1" type="text" name="text" value="0" onkeydown="calcTotalSum()"></td>
+		</tr>
+		<tr>
+			<th>Vendes Brutes</th>				
+			<td class="tdInput" style="padding-right: 2vw;"><input class="inputTbl" id="fc2" type="text" name="text" value="0" onkeydown="calcTotalSum()"></td>
+		</tr>
+		<tr>
+			<th>Compres Brutes</th>
+			<td class="tdInput" style="padding-right: 2vw;"><input class="inputTbl" id="fc3" type="text" name="text" value="0" onkeydown="calcTotalSum()"></td>
+		</tr>
 	</table>
 
 	<table class="text" align="center" style="border-collapse: collapse;">
@@ -134,6 +142,89 @@
 	<p class="text" id="COMM" style="text-align: center; margin: 0"></p>
 	<h2>Càlcul del Fons de Maniobra</h2>
 	<p class="text" id="FM" style="text-align: center; padding-bottom: 2vw;"></p>
+
+	<h2>Comptes de Resultats</h2>
+	<table class="text table" align="center">
+		<thead>
+			<tr>
+				<th></th>
+				<th>€</th>
+				<th>%</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Vendes</th>
+				<td id="tdV"><input class="inputTbl" id="cr0" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
+				<td id="percV"></td>
+			</tr>
+			<tr>
+				<th>Cost de les Vendes</th>
+				<td><input class="inputTbl" id="cr1" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
+				<td id="percCV"></td>
+			</tr>
+			<tr>
+				<th>Marge Brut</th>
+				<td id="MB"></td>
+				<td id="percMB"></td>
+			</tr>
+			<tr>
+				<th>Costos Fixos</th>
+				<td><input class="inputTbl" id="cr2" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
+				<td id="percCF"></td>
+			</tr>
+			<tr>
+				<th>Benefici abans<br>d'interessos i impostos</th>
+				<td id="BAII"></td>
+				<td id="percBAII"></td>
+			</tr>
+			<tr>
+				<th>Despeses Financeres</th>
+				<td><input class="inputTbl" id="cr3" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
+				<td id="percDF"></td>
+			</tr>
+			<tr>
+				<th>Benefici abans<br>d'impostos</th>
+				<td id="BAI"></td>
+				<td id="percBAI"></td>
+			</tr>
+			<tr>
+				<th>Impostos de Societats</th>
+				<td><input class="inputTbl" id="cr4" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
+				<td id="percIS"></td>
+			</tr>
+			<tr>
+				<th>Benefici Net</th>
+				<td id="BN"></td>
+				<td id="percBN"></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<table class="text" align="center" style="border-collapse: collapse;">
+		<thead style="background-color: transparent;">
+			<tr>
+				<th style="padding-bottom: 1.2vw; font-size: 2vw;">Representació gràfica</th>
+			</tr>
+		</thead>
+		<tbody>		
+		<tr>
+			<td>
+				<div class="chart" id="chartCV" title="Costos de vendes" style="margin: auto">
+				</div>
+				<div class="chart" id="chartCF" title="Costos fixos" style="margin: auto">
+				</div>
+				<div class="chart" id="chartDF" title="Despeses financeres" style="margin: auto">
+				</div>
+				<div class="chart" id="chartIS" title="Impostos" style="margin: auto">
+				</div>
+				<div class="chart" id="chartBN" title="Benefici net" style="margin: auto">
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+
 </body>
 <footer style="background-color: #95a5a6; margin-top: 4vw;">
 		<a href="https://github.com/Blondie-TheManWithNoName" draggable="false" style="outline: none;" target="_blank">

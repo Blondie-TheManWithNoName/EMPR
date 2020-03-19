@@ -1,10 +1,11 @@
+
 	function percent()
 	{
+		var sz = 4.5;	
 		let nm = parseFloat(document.getElementById("percA0").innerHTML, 10);
 		let nPatNet = parseFloat(document.getElementById("percP0").innerHTML, 10);
 		let nPasNoCorrent = parseFloat(document.getElementById("percP1").innerHTML, 10);
 		let nPasCorrent = parseFloat(document.getElementById("percP2").innerHTML, 10);
-		var sz = 4.5;
 		let acNoCorrent = document.getElementById("acNoCorrent");
 		let acCorrent = document.getElementById("acCorrent");
 		let patNet = document.getElementById("patNet");
@@ -64,6 +65,87 @@
 			totalSumAct();
 			totalSumPas();
 		}
+	}
+
+	function calcComptResult()
+	{
+		if(event.key === 'Enter') {
+			let cr0 = parseFloat(document.getElementById("cr0").value);
+			let cr1 = parseFloat(document.getElementById("cr1").value)
+			let cr2 = parseFloat(document.getElementById("cr2").value);
+			let cr3 = parseFloat(document.getElementById("cr3").value);
+			let cr4 = parseFloat(document.getElementById("cr4").value);
+
+			let r0 =  cr0 - cr1;
+			let r1 = r0 - cr2;
+			let r2 = r1 - cr3;
+			let r3 = r2 - cr4;
+
+			document.getElementById("MB").innerHTML = (r0).toString();
+			document.getElementById("BAII").innerHTML = (r1).toString();
+			document.getElementById("BAI").innerHTML = (r2).toString();
+			document.getElementById("BN").innerHTML = (r3).toString();
+
+
+
+			let pc0 = (cr1 / cr0 * 100).toFixed(2);
+			let pc1 = (cr2 / cr0 * 100).toFixed(2);
+			let pc2 = (cr3 / cr0 * 100).toFixed(2);
+			let pc3 = (cr4 / cr0 * 100).toFixed(2);
+			let pc4 = (r3 / cr0 * 100).toFixed(2);
+			document.getElementById("percV").innerHTML = "100";
+			document.getElementById("percCV").innerHTML = (pc0).toString();
+			document.getElementById("percMB").innerHTML = (r0 / cr0 * 100).toFixed(2).toString();
+			document.getElementById("percCF").innerHTML = (pc1).toString();
+			document.getElementById("percBAII").innerHTML = (r1 / cr0 * 100).toFixed(2).toString();
+			document.getElementById("percDF").innerHTML = (pc2).toString();
+			document.getElementById("percBAI").innerHTML = (r2 / cr0 * 100).toFixed(2).toString();
+			document.getElementById("percIS").innerHTML = (pc3).toString();
+			document.getElementById("percBN").innerHTML = (pc4).toString();
+			
+			let szY = 6;
+			let szX = 4.5;
+			/* Costos de vendes */
+			chartCV.style.backgroundColor = "#1e3799";
+			chartCV.innerHTML = pc0 + "%";
+			chartCV.style.height = pc0 * szY + "px";
+			chartCV.style.width = 75 * szX + "px";
+			chartCV.style.lineHeight = pc0 * szY + "px";
+
+			/* Costos fixos */
+			chartCF.style.backgroundColor = "#4a69bd";
+			chartCF.innerHTML = pc1 + "%";
+			chartCF.style.height = pc1 * szY + "px";
+			chartCF.style.width = 75 * szX + "px";
+			chartCF.style.lineHeight = pc1 * szY + "px";
+
+			/* Despeses financieres */
+			chartDF.style.backgroundColor = "#6a89cc";
+			chartDF.innerHTML = pc2 + "%";
+			chartDF.style.height = pc2 * szY + "px";
+			chartDF.style.width = 75 * szX + "px";
+			chartDF.style.lineHeight = pc2 * szY + "px";
+
+			/* Impostos */
+			chartIS.style.backgroundColor = "#60a3bc";
+			chartIS.innerHTML = pc3 + "%";
+			chartIS.style.height = pc3 * szY + "px";
+			chartIS.style.width = 75 * szX + "px";
+			chartIS.style.lineHeight = pc3 * szY + "px";
+
+			/* Benefici net */
+			chartBN.style.backgroundColor = "#7d5fff";
+			chartBN.innerHTML = pc4 + "%";
+			chartBN.style.height = pc4 * szY + "px";
+			chartBN.style.width = 75 * szX + "px";
+			chartBN.style.lineHeight = pc4 * szY + "px";
+
+		}	
+	}
+
+	function chartComptResult()
+	{
+
 	}
 
 
@@ -160,7 +242,6 @@
 		totalSumAct();
 	}
 
-
 	function ratioCalc()
 	{
 		let indMsg = 'indeterminació matemàtica.';
@@ -208,8 +289,6 @@
 				else document.getElementById("RQD").innerHTML += " &#8211; L'empresa té temps no té molt temps per pagar els seus deutes."
 			}
 		}
-
-
 
 		document.getElementById("RL").innerHTML = '<b>Ratio de liquiditat: </b>';
 		if (pa2 == 0)
