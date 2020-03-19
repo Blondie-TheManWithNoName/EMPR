@@ -257,19 +257,19 @@
 		document.getElementById("RE").innerHTML = '<b>Ràtio endeutament: </b>';
 		if (pa0 + pa1 + pa2 == 0)
 		{
-			if (pa0 != 0)
+			if (pa1 + pa2 != 0)
 				document.getElementById("RE").innerHTML += '&#8734; &#8211; L\'empresa està literalment morta.';
 			else
 				document.getElementById("RE").innerHTML += indMsg;
 		}
 		else
 		{
-			document.getElementById("RE").innerHTML += (pa0 / (pa0 + pa1 + pa2)).toFixed(2);
-			if ((pa0 / (pa0 + pa1 + pa2)).toFixed(2) > 0.6) document.getElementById("RE").innerHTML += " &#8211; L'empresa té molts deutes";
-			else if ((pa0 / (pa0 + pa1 + pa2)).toFixed(2) == 0.6) document.getElementById("RE").innerHTML += " &#8211; L'empresa està bé";
-			else if ((pa0 / (pa0 + pa1 + pa2)).toFixed(2) < 0.6) 
+			document.getElementById("RE").innerHTML += (pa1 + pa2 / (pa0 + pa1 + pa2)).toFixed(2);
+			if ((pa1 + pa2 / (pa0 + pa1 + pa2)).toFixed(2) > 0.6) document.getElementById("RE").innerHTML += " &#8211; L'empresa té molts deutes";
+			else if ((pa1 + pa2 / (pa0 + pa1 + pa2)).toFixed(2) == 0.6) document.getElementById("RE").innerHTML += " &#8211; L'empresa està bé";
+			else if ((pa1 + pa2 / (pa0 + pa1 + pa2)).toFixed(2) < 0.6) 
 			{
-				if ((pa0 / (pa0 + pa1 + pa2)).toFixed(2) == 0) document.getElementById("RE").innerHTML += " &#8211; L'empresa no deu res de res!";
+				if ((pa1 + pa2 / (pa0 + pa1 + pa2)).toFixed(2) == 0) document.getElementById("RE").innerHTML += " &#8211; L'empresa no deu res de res!";
 				else document.getElementById("RE").innerHTML += " &#8211; L'empresa va molt bé respecte els deutes.";
 			}
 		}
