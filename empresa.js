@@ -300,9 +300,9 @@
 		comptResult();
 	}
 
+	var indMsg = 'indeterminació matemàtica.';
 	function ratioCalc()
 	{
-		let indMsg = 'indeterminació matemàtica.';
 		let pa0 = parseFloat(document.getElementById("pa0").value);
 		let pa1 = parseFloat(document.getElementById("pa1").value);
 		let pa2 = parseFloat(document.getElementById("pa2").value);
@@ -322,17 +322,17 @@
 		}
 		else
 		{
-			document.getElementById("RE").innerHTML += (pa1 + pa2 / (pa0 + pa1 + pa2)).toFixed(2);
-			if ((pa1 + pa2 / (pa0 + pa1 + pa2)).toFixed(2) > 0.6) document.getElementById("RE").innerHTML += " &#8211; L'empresa té molts deutes";
-			else if ((pa1 + pa2 / (pa0 + pa1 + pa2)).toFixed(2) == 0.6) document.getElementById("RE").innerHTML += " &#8211; L'empresa està bé";
-			else if ((pa1 + pa2 / (pa0 + pa1 + pa2)).toFixed(2) < 0.6) 
+			document.getElementById("RE").innerHTML += ((pa1 + pa2) / (pa0 + pa1 + pa2)).toFixed(2);
+			if (((pa1 + pa2) / (pa0 + pa1 + pa2)).toFixed(2) > 0.6) document.getElementById("RE").innerHTML += " &#8211; L'empresa té molts deutes";
+			else if (((pa1 + pa2) / (pa0 + pa1 + pa2)).toFixed(2) == 0.6) document.getElementById("RE").innerHTML += " &#8211; L'empresa està bé";
+			else if (((pa1 + pa2) / (pa0 + pa1 + pa2)).toFixed(2) < 0.6) 
 			{
-				if ((pa1 + pa2 / (pa0 + pa1 + pa2)).toFixed(2) == 0) document.getElementById("RE").innerHTML += " &#8211; L'empresa no deu res de res!";
+				if (((pa1 + pa2) / (pa0 + pa1 + pa2)).toFixed(2) == 0) document.getElementById("RE").innerHTML += " &#8211; L'empresa no deu res de res!";
 				else document.getElementById("RE").innerHTML += " &#8211; L'empresa va molt bé respecte els deutes.";
 			}
 		}
 
-		document.getElementById("RQD").innerHTML = '<b>Ratio de qualitat del deute: </b>';
+		document.getElementById("RQD").innerHTML = '<b>Ràtio de qualitat del deute: </b>';
 		if (pa1 + pa2 == 0) 
 		{
 			document.getElementById("RQD").innerHTML += indMsg;
@@ -344,11 +344,11 @@
 			else if ((pa2 / (pa1 + pa2)).toFixed(2) > 0.5)
 			{
 				if ((pa2 / (pa1 + pa2)).toFixed(2) > 0.95) document.getElementById("RQD").innerHTML += " &#8211; L'empresa ha de pagar els seus deutes inmediatament."
-				else document.getElementById("RQD").innerHTML += " &#8211; L'empresa té temps no té molt temps per pagar els seus deutes."
+				else document.getElementById("RQD").innerHTML += " &#8211; L'empresa no té molt temps per pagar els seus deutes."
 			}
 		}
 
-		document.getElementById("RL").innerHTML = '<b>Ratio de liquiditat: </b>';
+		document.getElementById("RL").innerHTML = '<b>Ràtio de liquiditat: </b>';
 		if (pa2 == 0)
 		{
 			if (ac != 0)
@@ -406,6 +406,9 @@
 			else
 				document.getElementById("COMM").innerHTML = "Correcte.";
 		}
+	}
+
+	function calcDesp() {
 
 
 	}
