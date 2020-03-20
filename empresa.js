@@ -114,10 +114,10 @@
 			cr4 = 0;
 			document.getElementById("cr4").value = "0";
 		}
-		let r0 =  cr0 - cr1;
-		let r1 = r0 - cr2;
-		let r2 = r1 - cr3;
-		let r3 = r2 - cr4;
+		let r0 = Number((cr0 - cr1).toFixed(2));
+		let r1 = Number((r0 - cr2).toFixed(2));
+		let r2 = Number((r1 - cr3).toFixed(2));
+		let r3 = Number((r2 - cr4).toFixed(2));
 
 		document.getElementById("MB").innerHTML = (r0).toString();
 		document.getElementById("BAII").innerHTML = (r1).toString();
@@ -204,6 +204,10 @@
 		chartBN.style.height = pc4 * szY + "px";
 		chartBN.style.width = 75 * szX + "px";
 		chartBN.style.lineHeight = pc4 * szY + "px";
+
+
+		document.getElementById("DV").innerHTML = "<b>Despeses  </b>"
+
 	}	
 
 	function totalSumPas()
@@ -371,8 +375,8 @@
 
 		document.getElementById("FM").innerHTML = '<b>Fons de maniobra: </b>' + (ac - pa2);
 		if (ac - pa2 < 0) document.getElementById("FM").innerHTML += " &#8211; L'empresa està en una mala situació, té problemes per pagar els deutes.";
-		else if (ac - pa2 > 0) document.getElementById("FM").innerHTML += " &#8211; L'empresa està en una situació de risc, dèpen dels seus clients per pagar els deutes.";
-		else document.getElementById("FM").innerHTML += " &#8211; L'empresa està en situació de risc.";
+		else if (ac - pa2 > 0) document.getElementById("FM").innerHTML += " &#8211; L'empresa està en una situació de solvència financera segura.";
+		else document.getElementById("FM").innerHTML += " &#8211; L'empresa està en una situació de risc, dèpen dels seus clients per pagar els deutes.";
 
 
 		document.getElementById("TMC").innerHTML = '<b>Termini mitjà de cobrament:</b> ';
