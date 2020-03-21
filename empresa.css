@@ -12,6 +12,32 @@ html
 {
 	font-family: Roboto;
 }
+button
+{
+	text-decoration: none;
+	font-size: 150%;
+	border: none;
+	width: 3vw;
+	height: 3vw;
+	transition: 1s;
+	background-color: #dfe6e9;
+	margin-top: 1vw;
+	font-family: Roboto;
+
+}
+button:hover
+{
+	cursor: pointer;
+	background-color: #95a5a6;
+}
+#currBtn
+{
+	font-weight: bold;
+}
+.curr
+{
+	text-transform: capitalize;	
+}
 header
 {
 	font-size: 6vw;
@@ -176,4 +202,23 @@ img
 	background-size: cover;
 	border-radius: 100px;
 	transition: all 1s;
+}
+
+
+.drawer {
+	height: 0;
+	width: 3vw;
+	position: absolute;
+	text-align: center;
+	display: block;
+	overflow-y: hidden;
+	transition: 0.3s;
+	transition-timing-function: ease-in-out;
+}
+
+.containerMenu {
+	display: inline-block;
+	position: static;
+	padding: 2%;
+
 }

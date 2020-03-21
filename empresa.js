@@ -210,6 +210,11 @@
 
 	}	
 
+	function currency()
+	{
+		return actCurrency;
+	}
+
 	function totalSumPas()
 	{
 		let total = 0;
@@ -297,11 +302,47 @@
 		}
 
 	}
+	function changeCurr(curr) {
+		var aux = document.getElementById("currBtn").innerHTML;
+		setCurr(curr.innerHTML);
+		curr.innerHTML = aux;
+	}
+
+	function setCurr (currValue)
+	{
+		var curr = document.getElementsByClassName("curr");
+		for (var i = 0; i < curr.length; i++) {
+			curr[i].innerHTML = currValue;
+		}
+	}
+
+	function pickCurr () 
+	{
+		var btn = document.getElementById("currBtn");
+		var menu = document.getElementById("currMenu");
+		btn.toggleAttribute("open");
+		if (btn.hasAttribute("open"))
+		{
+			menu.style.height = "20vw";
+		}
+		else
+		{			
+			menu.style.height = "0vw";
+		}
+
+	}
 
 	window.onload = () => {
 		totalSumPas();	
 		totalSumAct();
 		comptResult();
+		setCurr("€");
+		document.getElementById("currMenuBtn0").innerHTML = "$";
+		document.getElementById("currMenuBtn1").innerHTML = "£";
+		document.getElementById("currMenuBtn2").innerHTML = "¥";
+		document.getElementById("currMenuBtn4").innerHTML = "Fr";
+		document.getElementById("currMenuBtn5").innerHTML = "₹";
+
 	}
 
 	var indMsg = 'indeterminació matemàtica.';
