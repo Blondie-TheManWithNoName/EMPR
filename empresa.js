@@ -158,12 +158,17 @@
 		document.getElementById("percV").innerHTML = "100";
 		document.getElementById("percCV").innerHTML = Number(pc0).toString();
 		document.getElementById("percCF").innerHTML = Number(pc1).toString();
-		document.getElementById("percDF").innerHTML = Number(pc2).toString();
+		(document.getElementById("opBtn0").hasAttribute("minus")) ? document.getElementById("percDF").innerHTML = Number(pc2).toString() : document.getElementById("percDF").innerHTML =  "-" + Number(pc2).toString();
 		document.getElementById("percIS").innerHTML = Number(pc3).toString();
 		document.getElementById("percBN").innerHTML = Number(pc4).toString();
 		
 		let szY = 6;
 		let szX = 4.5;
+		if (!document.getElementById("opBtn0").hasAttribute("minus"))
+		{
+			pc1 = pc1 - pc2;
+			pc2 = 0;
+		}
 
 		/* Costos de vendes */
 		if (Number(pc0) == 69) chartCV.setAttribute("title", "nice");
