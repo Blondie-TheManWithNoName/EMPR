@@ -18,7 +18,7 @@
 			<button class="button" id="currMenuBtn5" onclick="pickCurr(), changeCurr(this)"></button>
 		</div>
 	</div>
-	<h1>Anàlisi de la situació <br> patrimonial i financera <br> d'una Empresa</h1>
+	<h1>Anàlisi de la situació<br>patrimonial i financera</h1>
 	<h2>Balanç</h2>
 	<table class="text table" align="center">
 		<thead>
@@ -87,28 +87,36 @@
 	</table>
 
 	<table class="text table" align="center">
-		<tr>
-			<th>Clients</th>
-			<td class="tdInput" style="padding-right: 2vw;"><input class="inputTbl" id="fc0" type="text" name="text" value="0" onkeydown="calcTotalSum()"></td>
-		</tr>
-		<tr>
-			<th>Proveïdors</th>				
-			<td class="tdInput" style="padding-right: 2vw;"><input class="inputTbl" id="fc1" type="text" name="text" value="0" onkeydown="calcTotalSum()"></td>
-		</tr>
-		<tr>
-			<th>Vendes Brutes</th>				
-			<td class="tdInput" style="padding-right: 2vw;"><input class="inputTbl" id="fc2" type="text" name="text" value="0" onkeydown="calcTotalSum()"></td>
-		</tr>
-		<tr>
-			<th>Compres Brutes</th>
-			<td class="tdInput" style="padding-right: 2vw;"><input class="inputTbl" id="fc3" type="text" name="text" value="0" onkeydown="calcTotalSum()"></td>
-		</tr>
+		<thead>
+			<tr>
+				<th></th>
+				<th class="curr"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Clients</th>
+				<td class="tdInput" style="padding: 1.5vw;"><input class="inputTbl" id="fc0" type="text" name="text" value="0" onkeydown="calcTotalSum()"></td>
+			</tr>
+			<tr>
+				<th>Proveïdors</th>				
+				<td class="tdInput" style="padding: 1.5vw;"><input class="inputTbl" id="fc1" type="text" name="text" value="0" onkeydown="calcTotalSum()"></td>
+			</tr>
+			<tr>
+				<th>Vendes Brutes</th>				
+				<td class="tdInput" style="padding: 1.5vw;"><input class="inputTbl" id="fc2" type="text" name="text" value="0" onkeydown="calcTotalSum()"></td>
+			</tr>
+			<tr>
+				<th>Compres Brutes</th>
+				<td class="tdInput" style="padding: 1.5vw;"><input class="inputTbl" id="fc3" type="text" name="text" value="0" onkeydown="calcTotalSum()"></td>
+			</tr>
+		</tbody>
 	</table>
 
 	<table class="text" align="center" style="border-collapse: collapse;">
 		<thead style="background-color: transparent;">
 			<tr>
-				<th colspan="2" style="padding-bottom: 1.2vw; font-size: 2vw;">Representació gràfica</th>
+				<th colspan="2" style="padding-bottom: 1.2vw; font-size: 2vw; color: #2c3e50;">Representació gràfica</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -151,8 +159,9 @@
 	</ul>
 	<p class="text" id="COMM" style="text-align: center; margin: 0"></p>
 	<h2>Càlcul del Fons de Maniobra</h2>
-	<p class="text" id="FM" style="text-align: center; padding-bottom: 2vw;"></p>
+	<p class="text" id="FM" style="text-align: center; padding-bottom: 2vw; margin-bottom: 5vw;"></p>
 
+	<h1>Anàlisi del compte<br>de resultats</h1>
 	<h2>Comptes de Resultats</h2>
 	<table class="text table" align="center">
 		<thead>
@@ -211,10 +220,29 @@
 		</tbody>
 	</table>
 
+	<table class="text table" align="center">
+		<thead>
+			<tr>
+				<th></th>
+				<th class="curr"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>Personal</th>
+				<td class="tdInput" style="padding: 1.5vw;"><input class="inputTbl" id="sc0" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
+			</tr>
+			<tr>
+				<th>Tributs</th>				
+				<td class="tdInput" style="padding: 1.5vw;"><input class="inputTbl" id="sc1" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
+		</tr>
+		</tbody>
+	</table>
+
 	<table class="text" align="center" style="border-collapse: collapse;">
 		<thead style="background-color: transparent;">
 			<tr>
-				<th style="padding-bottom: 1.2vw; font-size: 2vw;">Representació gràfica</th>
+				<th style="padding-bottom: 1.2vw; font-size: 2vw; color: #2c3e50;">Representació gràfica</th>
 			</tr>
 		</thead>
 		<tbody>		
@@ -274,6 +302,6 @@
 		<br><br><b>Collaborators:</b> Gerard Doncel Gutiérrez, 
 		Sergio López Carbonell, 
 		Aleix Pieres Carrasco, 
-		Daniel Zimmermann Garcia</p>
+		Daniel Zimmermann García</p>
 </footer>
 </html>

@@ -145,17 +145,17 @@
 			pc3 = (cr4 / cr0 * 100).toFixed(2);
 			pc4 = (r3 / cr0 * 100).toFixed(2);
 		
-			document.getElementById("percMB").innerHTML = (r0 / cr0 * 100).toFixed(2).toString();
-			document.getElementById("percBAII").innerHTML = (r1 / cr0 * 100).toFixed(2).toString();
-			document.getElementById("percBAI").innerHTML = (r2 / cr0 * 100).toFixed(2).toString();
+			document.getElementById("percMB").innerHTML = Number((r0 / cr0 * 100).toFixed(2)).toString();
+			document.getElementById("percBAII").innerHTML = Number((r1 / cr0 * 100).toFixed(2)).toString();
+			document.getElementById("percBAI").innerHTML = Number((r2 / cr0 * 100).toFixed(2)).toString();
 
 		}
 		document.getElementById("percV").innerHTML = "100";
-		document.getElementById("percCV").innerHTML = (pc0).toString();
-		document.getElementById("percCF").innerHTML = (pc1).toString();
-		document.getElementById("percDF").innerHTML = (pc2).toString();
-		document.getElementById("percIS").innerHTML = (pc3).toString();
-		document.getElementById("percBN").innerHTML = (pc4).toString();
+		document.getElementById("percCV").innerHTML = Number(pc0).toString();
+		document.getElementById("percCF").innerHTML = Number(pc1).toString();
+		document.getElementById("percDF").innerHTML = Number(pc2).toString();
+		document.getElementById("percIS").innerHTML = Number(pc3).toString();
+		document.getElementById("percBN").innerHTML = Number(pc4).toString();
 		
 		let szY = 6;
 		let szX = 4.5;
@@ -206,8 +206,19 @@
 		chartBN.style.lineHeight = pc4 * szY + "px";
 
 
-		document.getElementById("DV").innerHTML = "<b>Despeses  </b>"
 
+
+		document.getElementById("DV").innerHTML = "<b>Despeses variables: </b>" + Number(pc0) + "%";
+		document.getElementById("DFix").innerHTML = "<b>Despeses fixes: </b>" + Number(pc1) + "%";
+		document.getElementById("DP").innerHTML = "<b>Despeses de personal: </b>" + Number(parseFloat(document.getElementById("sc0").value) / cr0 * 100).toFixed(2) + "%";
+		document.getElementById("DT").innerHTML = "<b>Despeses de tributs: </b>" + Number(parseFloat(document.getElementById("sc1").value) / cr0 * 100).toFixed(2) + "%";
+		document.getElementById("DFin").innerHTML = "<b>Despeses financeres: </b>" + Number(pc2) + "%";
+		document.getElementById("DSSE").innerHTML = "<b>Despeses de subministraments i serveis externs: </b>" + Number(pc3) + "%";
+
+		console.log("pc1: ", pc1);
+		console.log("pc0: ", pc0);
+		console.log("cr0: ", cr0);
+		document.getElementById("PE").innerHTML = "<b>Punt d'equilibri: </b>" + Number((cr2 / ( 1 - (cr1 / cr0))).toFixed(2));
 	}	
 
 	function currency()
