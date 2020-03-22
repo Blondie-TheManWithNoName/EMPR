@@ -21,14 +21,32 @@ button
 	height: 3vw;
 	transition: 1s;
 	background-color: #dfe6e9;
-	margin-top: 1vw;
 	font-family: Roboto;
+	user-select: none;
 
+}
+button:focus {outline:0;}
+
+.opBtn
+{
+	font-weight: lighter;
+}
+.button
+{
+	margin-top: 1vw;
+}
+
+.opBtn:hover
+{
+	color: rgba(50, 160, 245, 0.65);
+}
+.button:hover
+{
+	background-color: #95a5a6;
 }
 button:hover
 {
 	cursor: pointer;
-	background-color: #95a5a6;
 }
 #currBtn
 {

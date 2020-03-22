@@ -167,6 +167,7 @@
 		<thead>
 			<tr>
 				<th></th>
+				<th style="padding: 0;"></th>
 				<th class="curr"></th>
 				<th>%</th>
 			</tr>
@@ -174,47 +175,56 @@
 		<tbody>
 			<tr>
 				<th>Vendes</th>
-				<td id="tdV"><input class="inputTbl" id="cr0" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
+				<td style="padding: 0;"></td>
+				<td style="padding-left: 0;" id="tdV"><input class="inputTbl" id="cr0" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
 				<td id="percV"></td>
 			</tr>
 			<tr>
 				<th>Cost de les Vendes</th>
-				<td><input class="inputTbl" id="cr1" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
+				<td style="padding: 0;"></td>
+				<td style="padding-left: 0;"><input class="inputTbl" id="cr1" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
 				<td id="percCV"></td>
 			</tr>
-			<tr>
+			<tr style="background-color: rgba(50, 160, 245, 0.65)">
 				<th>Marge Brut</th>
-				<td id="MB"></td>
+				<td style="padding: 0;"></td>
+				<td style="padding-left: 0;" id="MB"></td>
 				<td id="percMB"></td>
 			</tr>
 			<tr>
 				<th>Costos Fixos</th>
-				<td><input class="inputTbl" id="cr2" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
+				<td style="padding: 0;"></td>
+				<td style="padding-left: 0;"><input class="inputTbl" id="cr2" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
 				<td id="percCF"></td>
 			</tr>
-			<tr>
+			<tr style="background-color: rgba(50, 160, 245, 0.65)">
 				<th>Benefici abans<br>d'interessos i impostos</th>
-				<td id="BAII"></td>
+				<td style="padding: 0;"></td>
+				<td style="padding-left: 0;" id="BAII"></td>
 				<td id="percBAII"></td>
 			</tr>
 			<tr>
-				<th>Despeses Financeres</th>
-				<td><input class="inputTbl" id="cr3" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
+				<th>Resultats Financers</th>
+				<td style="padding: 0;"><button class="opBtn" id="opBtn0" onclick="opToggleBtn()">+</button></td>
+				<td style="padding-left: 0;"><input class="inputTbl" id="cr3" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
 				<td id="percDF"></td>
 			</tr>
-			<tr>
+			<tr style="background-color: rgba(50, 160, 245, 0.65)">
 				<th>Benefici abans<br>d'impostos</th>
-				<td id="BAI"></td>
+				<td style=" padding : 0; width: 0vw"></td>
+				<td style="padding-left: 0;" id="BAI"></td>
 				<td id="percBAI"></td>
 			</tr>
 			<tr>
 				<th>Impostos de Societats</th>
-				<td><input class="inputTbl" id="cr4" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
+				<td style="padding: 0;"></td>
+				<td style="padding-left: 0;"><input class="inputTbl" id="cr4" type="text" name="text" value="0" onkeydown="calcComptResult()"></td>
 				<td id="percIS"></td>
 			</tr>
-			<tr>
+			<tr style="background-color: rgba(50, 160, 245, 0.65)">
 				<th>Benefici Net</th>
-				<td id="BN"></td>
+				<td style="padding: 0;"></td>
+				<td style="padding-left: 0;" id="BN"></td>
 				<td id="percBN"></td>
 			</tr>
 		</tbody>
@@ -242,12 +252,12 @@
 	<table class="text" align="center" style="border-collapse: collapse;">
 		<thead style="background-color: transparent;">
 			<tr>
-				<th style="padding-bottom: 1.2vw; font-size: 2vw; color: #2c3e50;">Representació gràfica</th>
+				<th  colspan="2" style="padding-bottom: 1.2vw; font-size: 2vw; color: #2c3e50;">Representació gràfica</th>
 			</tr>
 		</thead>
 		<tbody>		
 		<tr>
-			<td>
+			<td style="padding-right: 0vw; margin: 0">
 				<div class="chart" id="chartCV" title="Costos de vendes" style="margin: auto">
 				</div>
 				<div class="chart" id="chartCF" title="Costos fixos" style="margin: auto">
@@ -257,6 +267,10 @@
 				<div class="chart" id="chartIS" title="Impostos" style="margin: auto">
 				</div>
 				<div class="chart" id="chartBN" title="Benefici net" style="margin: auto">
+				</div>
+			</td>
+			<td style="padding-left: 0vw;">
+				<div class="chart" id="chartV" title="Vendes" style="margin: auto">
 				</div>
 			</td>
 		</tr>

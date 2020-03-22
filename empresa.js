@@ -65,9 +65,13 @@
 
 	}
 
-	function search(ele) {
-		alert(ele.value);        
+	function opToggleBtn ()
+	{
+		var btn = document.getElementById("opBtn0");
+		btn.toggleAttribute("minus");
+		(btn.hasAttribute("minus")) ? btn.innerHTML = "-" : btn.innerHTML = "+";
 	}
+
 
 	function calcTotalSum()
 	{
@@ -116,7 +120,8 @@
 		}
 		let r0 = Number((cr0 - cr1).toFixed(2));
 		let r1 = Number((r0 - cr2).toFixed(2));
-		let r2 = Number((r1 - cr3).toFixed(2));
+		let r2;
+		(document.getElementById("opBtn0").hasAttribute("minus")) ? r2 = Number((r1 - cr3).toFixed(2)) : r2 = Number((r1 + cr3).toFixed(2));
 		let r3 = Number((r2 - cr4).toFixed(2));
 
 		document.getElementById("MB").innerHTML = (r0).toString();
@@ -205,7 +210,14 @@
 		chartBN.style.width = 75 * szX + "px";
 		chartBN.style.lineHeight = pc4 * szY + "px";
 
-
+		/* Vendes */
+		if (Number(pc4) == 69) chartV.setAttribute("title", "nice");
+		else chartV.setAttribute("title", "Vendes");
+		chartV.style.backgroundColor = "#27ae60";
+		chartV.innerHTML = "100%";
+		chartV.style.height = 100 * szY + "px";
+		chartV.style.width = 75 * szX + "px";
+		chartV.style.lineHeight = 100 * szY + "px";
 
 
 		document.getElementById("DV").innerHTML = "<b>Despeses variables: </b>" + Number(pc0) + "%";
@@ -220,11 +232,6 @@
 		console.log("cr0: ", cr0);
 		document.getElementById("PE").innerHTML = "<b>Punt d'equilibri: </b>" + Number((cr2 / ( 1 - (cr1 / cr0))).toFixed(2));
 	}	
-
-	function currency()
-	{
-		return actCurrency;
-	}
 
 	function totalSumPas()
 	{
