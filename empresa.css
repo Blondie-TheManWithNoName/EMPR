@@ -23,13 +23,14 @@ button
 	background-color: #dfe6e9;
 	font-family: Roboto;
 	user-select: none;
+	color: #2c3e50;
 
 }
 button:focus {outline:0;}
 
 .opBtn
 {
-	font-weight: lighter;
+	font-size: 1.8vw;
 }
 .button
 {
